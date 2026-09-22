@@ -1,108 +1,1026 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
   <title>SplashBD Ticket Registration</title>
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    html, body {
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
       width: 100%;
-      height: 100%;
-      overflow: hidden;
+      min-height: 100%;
       background-color: #0f0f11;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
       color: #ffffff;
     }
 
-    /* Invisible touch layer covering the entire screen for iOS */
-    .touch-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 9999;
+    body {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 24px;
+
+      min-height: 100vh;
+
+      padding: 20px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 390px;
       text-align: center;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
     }
 
     .card {
       width: 100%;
-      max-width: 380px;
+
       background: #1a1a1e;
+
       border: 1px solid #2e2e35;
+
       border-radius: 16px;
+
       padding: 32px 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      pointer-events: none; /* Passes touch directly to overlay */
+
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 800;
+
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+
+      color: #a1a1aa;
+
+      margin-bottom: 22px;
+    }
+
+    .message {
+      font-size: 14px;
+
+      color: #d4d4d8;
+
+      line-height: 1.6;
+
+      margin-bottom: 22px;
     }
 
     .spinner {
-      border: 3px solid rgba(255, 255, 255, 0.1);
       width: 42px;
       height: 42px;
-      border-radius: 50%;
-      border-left-color: #e1306c;
-      animation: spin 1s linear infinite;
+
       margin: 0 auto 20px;
+
+      border:
+        3px solid rgba(255,255,255,0.1);
+
+      border-left-color: #e1306c;
+
+      border-radius: 50%;
+
+      animation:
+        spin 1s linear infinite;
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+
     }
 
-    .title { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-    .subtitle { font-size: 14px; color: #a1a1aa; margin-bottom: 24px; }
-    
-    .touch-btn {
-      display: block;
+    .button {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
       width: 100%;
-      padding: 16px 0;
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 16px;
+
+      min-height: 52px;
+
+      margin-top: 12px;
+
+      padding: 14px 16px;
+
       border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+
+      text-decoration: none;
+
+      font-size: 15px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      border: none;
+
+      -webkit-tap-highlight-color: transparent;
     }
+
+    .primary {
+
+      background:
+        linear-gradient(
+          45deg,
+          #f09433 0%,
+          #e6683c 25%,
+          #dc2743 50%,
+          #cc2366 75%,
+          #bc1888 100%
+        );
+
+      color: #ffffff;
+
+      box-shadow:
+        0 4px 15px rgba(225,48,108,0.3);
+    }
+
+    .safari {
+
+      background: #ffffff;
+
+      color: #111111;
+    }
+
+    .chrome {
+
+      background: #29292f;
+
+      border: 1px solid #3a3a43;
+
+      color: #ffffff;
+    }
+
+    .normal {
+
+      background: #222228;
+
+      border: 1px solid #37373f;
+
+      color: #ffffff;
+    }
+
+    .copy {
+
+      background: transparent;
+
+      border: 1px solid #44444d;
+
+      color: #d4d4d8;
+    }
+
+    .instruction {
+
+      display: none;
+
+      margin-top: 18px;
+
+      padding: 14px;
+
+      border-radius: 10px;
+
+      background: #222228;
+
+      border: 1px solid #34343c;
+
+      font-size: 12px;
+
+      line-height: 1.6;
+
+      color: #bdbdc6;
+    }
+
+    .small {
+
+      margin-top: 18px;
+
+      font-size: 11px;
+
+      color: #71717a;
+
+      line-height: 1.5;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    #iosButtons {
+      display: none;
+    }
+
+    #androidButtons {
+      display: none;
+    }
+
+    #normalBrowser {
+      display: none;
+    }
+
+    #loading {
+      display: none;
+    }
+
+    #fallbackArea {
+      display: none;
+    }
+
   </style>
+
 </head>
+
+
 <body>
 
-  <!-- Full Screen Touch Target -->
-  <a id="redirectTarget" href="https://script.google.com/macros/s/AKfycby9rLUfd6NsarZyUI5CZBXv9CuNrAEZZn05B8hAueg-w43C9mQK4gBSOC0soXxbDK4/exec" class="touch-overlay">
-    <div class="card">
+  <div class="page">
+
+    <!-- Loading -->
+    <div
+      id="loading"
+      class="card"
+    >
+
       <div class="spinner"></div>
-      <div class="title">SplashBD Registration</div>
-      <div class="subtitle">Retro Bollywood Night</div>
-      <div class="touch-btn">Tap Anywhere to Continue</div>
+
+      <div class="title">
+        SplashBD Registration
+      </div>
+
+      <div class="subtitle">
+        Retro Bollywood Night
+      </div>
+
+      <div class="message">
+        Opening registration...
+      </div>
+
     </div>
-  </a>
 
-  <script>
-    (function () {
-      var targetUrl = "https://script.google.com/macros/s/AKfycby9rLUfd6NsarZyUI5CZBXv9CuNrAEZZn05B8hAueg-w43C9mQK4gBSOC0soXxbDK4/exec";
-      var ua = navigator.userAgent || navigator.vendor || window.opera;
-      var isInstagram = (ua.indexOf("Instagram") > -1) || (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
-      var isAndroid = /Android/i.test(ua);
 
-      // Android: Bypasses Instagram automatically using Intent
-      if (isInstagram && isAndroid) {
-        var cleanUrl = targetUrl.replace(/^https?:\/\//, '');
-        window.location.href = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
-      }
-    })();
-  </script>
+    <!-- iOS / Instagram -->
+    <div
+      id="iosButtons"
+      class="card"
+    >
+
+      <div class="logo">
+        💗
+      </div>
+
+      <div class="title">
+        SplashBD Registration
+      </div>
+
+      <div class="subtitle">
+        Retro Bollywood Night
+      </div>
+
+      <div class="message">
+
+        Instagram's browser may not open our
+        registration page correctly.
+
+        <br><br>
+
+        Please open the registration in
+        Safari or Chrome.
+
+      </div>
+
+
+      <!-- Safari -->
+      <a
+        id="safariButton"
+        class="button safari"
+        href="#"
+      >
+         Open in Safari
+      </a>
+
+
+      <!-- Chrome -->
+      <a
+        id="chromeButton"
+        class="button chrome"
+        href="#"
+      >
+        🌐 Open in Chrome
+      </a>
+
+
+      <!-- Normal fallback -->
+      <a
+        id="normalButton"
+        class="button normal"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open Registration
+      </a>
+
+
+      <!-- Copy URL -->
+      <button
+        id="copyButton"
+        class="button copy"
+        type="button"
+      >
+        Copy Registration Link
+      </button>
+
+
+      <div
+        id="iosInstruction"
+        class="instruction"
+      >
+
+        <strong>
+          Still inside Instagram?
+        </strong>
+
+        <br><br>
+
+        Tap the
+        <strong>•••</strong>
+        menu in Instagram and choose
+        <strong>Open in Browser</strong>
+        or
+        <strong>Open in Safari</strong>.
+
+      </div>
+
+
+      <div class="small">
+
+        Your registration will open in the
+        normal browser. No Google sign-in is required.
+
+      </div>
+
+    </div>
+
+
+    <!-- Android / Instagram -->
+    <div
+      id="androidButtons"
+      class="card"
+    >
+
+      <div class="logo">
+        💗
+      </div>
+
+      <div class="title">
+        SplashBD Registration
+      </div>
+
+      <div class="subtitle">
+        Retro Bollywood Night
+      </div>
+
+      <div class="message">
+
+        Opening the registration in your
+        phone's browser...
+
+      </div>
+
+
+      <a
+        id="androidButton"
+        class="button primary"
+        href="#"
+      >
+        Open Registration
+      </a>
+
+
+      <a
+        id="androidNormalButton"
+        class="button normal"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open Normally
+      </a>
+
+
+      <div class="small">
+
+        If nothing happens, tap
+        <strong>Open Registration</strong>.
+
+      </div>
+
+    </div>
+
+
+    <!-- Normal browser -->
+    <div
+      id="normalBrowser"
+      class="card"
+    >
+
+      <div class="spinner"></div>
+
+      <div class="title">
+        SplashBD Registration
+      </div>
+
+      <div class="subtitle">
+        Retro Bollywood Night
+      </div>
+
+    </div>
+
+
+    <!-- Universal fallback -->
+    <div
+      id="fallbackArea"
+      class="card"
+    >
+
+      <div class="logo">
+        💗
+      </div>
+
+      <div class="title">
+        SplashBD Registration
+      </div>
+
+      <div class="subtitle">
+        Retro Bollywood Night
+      </div>
+
+      <div class="message">
+
+        Please tap the button below to continue
+        to the ticket registration form.
+
+      </div>
+
+      <a
+        id="fallbackButton"
+        class="button primary"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Continue to Registration
+      </a>
+
+    </div>
+
+  </div>
+
+
+<script>
+
+(function () {
+
+
+  /*
+   =====================================================
+   YOUR GOOGLE APPS SCRIPT REGISTRATION URL
+   =====================================================
+  */
+
+  var targetUrl =
+    "https://script.google.com/macros/s/AKfycby9rLUfd6NsarZyUI5CZBXv9CuNrAEZZn05B8hAueg-w43C9mQK4gBSOC0soXxbDK4/exec";
+
+
+  /*
+   =====================================================
+   USER AGENT
+   =====================================================
+  */
+
+  var ua =
+    navigator.userAgent ||
+    navigator.vendor ||
+    window.opera ||
+    "";
+
+
+  /*
+   =====================================================
+   PLATFORM DETECTION
+   =====================================================
+  */
+
+  var isAndroid =
+    /Android/i.test(ua);
+
+  var isIOS =
+    /iPhone|iPad|iPod/i.test(ua);
+
+  var isInstagram =
+    /Instagram/i.test(ua);
+
+  var isFacebook =
+    /FBAN|FBAV/i.test(ua);
+
+  var isMessenger =
+    /Messenger/i.test(ua);
+
+  var isInAppBrowser =
+    isInstagram ||
+    isFacebook ||
+    isMessenger;
+
+
+  /*
+   =====================================================
+   DOM ELEMENTS
+   =====================================================
+  */
+
+  var loading =
+    document.getElementById("loading");
+
+  var iosButtons =
+    document.getElementById("iosButtons");
+
+  var androidButtons =
+    document.getElementById("androidButtons");
+
+  var normalBrowser =
+    document.getElementById("normalBrowser");
+
+  var fallbackArea =
+    document.getElementById("fallbackArea");
+
+
+  /*
+   =====================================================
+   HIDE EVERYTHING FIRST
+   =====================================================
+  */
+
+  loading.style.display = "none";
+  iosButtons.style.display = "none";
+  androidButtons.style.display = "none";
+  normalBrowser.style.display = "none";
+  fallbackArea.style.display = "none";
+
+
+  /*
+   =====================================================
+   NORMAL BROWSER
+   =====================================================
+   Chrome / Safari / Firefox / Edge etc.
+
+   No Instagram/Facebook in-app browser detected.
+  */
+
+  if (!isInAppBrowser) {
+
+    normalBrowser.style.display = "block";
+
+    /*
+     * Give browser a moment to render.
+     */
+
+    setTimeout(function () {
+
+      window.location.replace(targetUrl);
+
+    }, 300);
+
+    return;
+  }
+
+
+  /*
+   =====================================================
+   IOS + INSTAGRAM / FACEBOOK
+   =====================================================
+  */
+
+  if (isIOS && isInAppBrowser) {
+
+    iosButtons.style.display = "block";
+
+
+    /*
+     =================================================
+     SAFARI
+     =================================================
+
+     x-safari-https is a commonly used iOS
+     browser-handoff URL scheme.
+
+     It is NOT an official Apple guarantee,
+     so we also provide other fallbacks.
+    */
+
+    var safariUrl =
+      "x-safari-https://" +
+      targetUrl.replace(
+        /^https:\/\//i,
+        ""
+      );
+
+
+    /*
+     * Safari button
+     */
+
+    var safariButton =
+      document.getElementById(
+        "safariButton"
+      );
+
+    safariButton.href = safariUrl;
+
+
+    /*
+     * Chrome button
+     *
+     * Works when Google Chrome is installed.
+     */
+
+    var chromeUrl =
+      "googlechrome://navigate?url=" +
+      encodeURIComponent(
+        targetUrl
+      );
+
+
+    var chromeButton =
+      document.getElementById(
+        "chromeButton"
+      );
+
+    chromeButton.href = chromeUrl;
+
+
+    /*
+     * Normal HTTPS fallback
+     */
+
+    var normalButton =
+      document.getElementById(
+        "normalButton"
+      );
+
+    normalButton.href = targetUrl;
+
+
+    /*
+     * Another fallback URL
+     */
+
+    var fallbackButton =
+      document.getElementById(
+        "fallbackButton"
+      );
+
+    fallbackButton.href = targetUrl;
+
+
+    /*
+     =================================================
+     * IMPORTANT:
+     * Do NOT automatically call the custom
+     * Safari/Chrome schemes.
+     *
+     * Instagram/iOS can block automatic launches.
+     *
+     * We let the user perform the tap.
+     =================================================
+    */
+
+
+    safariButton.addEventListener(
+      "click",
+      function () {
+
+        /*
+         * User gesture launches Safari.
+         */
+
+        window.location.href =
+          safariUrl;
+
+      },
+      false
+    );
+
+
+    chromeButton.addEventListener(
+      "click",
+      function () {
+
+        /*
+         * User gesture launches Chrome
+         * if Chrome is installed.
+         */
+
+        window.location.href =
+          chromeUrl;
+
+      },
+      false
+    );
+
+
+    /*
+     * Show instructions after a short delay.
+     */
+
+    setTimeout(
+      function () {
+
+        document
+          .getElementById(
+            "iosInstruction"
+          )
+          .style.display =
+          "block";
+
+      },
+      2500
+    );
+
+
+    /*
+     * Copy registration URL
+     */
+
+    document
+      .getElementById("copyButton")
+      .addEventListener(
+        "click",
+        function () {
+
+          /*
+           * Modern clipboard API
+           */
+
+          if (
+            navigator.clipboard &&
+            navigator.clipboard.writeText
+          ) {
+
+            navigator.clipboard
+              .writeText(targetUrl)
+              .then(
+                function () {
+
+                  this.textContent =
+                    "Link Copied ✓";
+
+                }.bind(this)
+              )
+              .catch(
+                function () {
+
+                  fallbackCopy(
+                    targetUrl,
+                    this
+                  );
+
+                }.bind(this)
+              );
+
+          } else {
+
+            fallbackCopy(
+              targetUrl,
+              this
+            );
+
+          }
+
+        }
+      );
+
+
+    return;
+  }
+
+
+  /*
+   =====================================================
+   ANDROID + INSTAGRAM / FACEBOOK
+   =====================================================
+  */
+
+  if (isAndroid && isInAppBrowser) {
+
+    androidButtons.style.display =
+      "block";
+
+
+    /*
+     * Remove https://
+     */
+
+    var cleanUrl =
+      targetUrl.replace(
+        /^https?:\/\//i,
+        ""
+      );
+
+
+    /*
+     =================================================
+     * GENERIC ANDROID INTENT
+     *
+     * We do NOT force Chrome.
+     *
+     * Android can resolve the URL to
+     * an available browser.
+     =================================================
+    */
+
+    var androidIntent =
+      "intent://" +
+      cleanUrl +
+      "#Intent;" +
+      "scheme=https;" +
+      "action=android.intent.action.VIEW;" +
+      "category=android.intent.category.BROWSABLE;" +
+      "S.browser_fallback_url=" +
+      encodeURIComponent(
+        targetUrl
+      ) +
+      ";" +
+      "end";
+
+
+    /*
+     * Primary Android button
+     */
+
+    var androidButton =
+      document.getElementById(
+        "androidButton"
+      );
+
+    androidButton.href =
+      androidIntent;
+
+
+    /*
+     * Normal fallback
+     */
+
+    var androidNormalButton =
+      document.getElementById(
+        "androidNormalButton"
+      );
+
+    androidNormalButton.href =
+      targetUrl;
+
+
+    /*
+     * Do NOT automatically force the intent.
+     *
+     * Instagram may block it.
+     *
+     * Instead the visitor taps the button.
+     */
+
+    androidButton.addEventListener(
+      "click",
+      function () {
+
+        window.location.href =
+          androidIntent;
+
+      },
+      false
+    );
+
+
+    return;
+  }
+
+
+  /*
+   =====================================================
+   GENERAL FALLBACK
+   =====================================================
+  */
+
+  fallbackArea.style.display =
+    "block";
+
+
+  document
+    .getElementById("fallbackButton")
+    .href =
+    targetUrl;
+
+
+  /*
+   =====================================================
+   COPY FUNCTION
+   =====================================================
+  */
+
+  function fallbackCopy(
+    text,
+    button
+  ) {
+
+    vvar targetUrl =
+  "https://script.google.com/macros/s/AKfycby7jiapxcxDqedMXOxtKfqK5c5tcVXmsGhqdi4Myl6HjWPQ4acwpB6Sx-bii1dmWNlrcA/exec";
+      document.createElement(
+        "textarea"
+      );
+
+    textarea.value =
+      text;
+
+    textarea.style.position =
+      "fixed";
+
+    textarea.style.left =
+      "-9999px";
+
+    document.body.appendChild(
+      textarea
+    );
+
+    textarea.focus();
+
+    textarea.select();
+
+    try {
+
+      document.execCommand(
+        "copy"
+      );
+
+      button.textContent =
+        "Link Copied ✓";
+
+    } catch (e) {
+
+      button.textContent =
+        "Copy Failed";
+
+    }
+
+    document.body.removeChild(
+      textarea
+    );
+
+  }
+
+
+})();
+
+</script>
 
 </body>
+
 </html>
