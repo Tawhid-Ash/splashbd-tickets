@@ -2,24 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SplashBD Ticket Registration</title>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: #0f0f11;
       color: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: #1a1a1e;
+      border: 1px solid #2e2e35;
+      border-radius: 16px;
+      padding: 28px 20px;
       text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     .spinner {
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      width: 40px;
-      height: 40px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       border-left-color: #e1306c;
       animation: spin 1s linear infinite;
@@ -29,50 +39,47 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    .title { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .subtitle { font-size: 14px; color: #a1a1aa; margin-bottom: 20px; }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 15px 0;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
 
-  <div>
+  <div class="card">
     <div class="spinner"></div>
-    <p>Opening Registration Form...</p>
+    <div class="title">SplashBD Registration</div>
+    <div class="subtitle">Opening form...</div>
+    <a id="openFormBtn" href="#" class="btn">Tap Here if Page Doesn't Open</a>
   </div>
 
   <script>
     (function () {
-      // REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
-      var targetUrl = "https://script.google.com/macros/s/AKfycby7jiapxcxDqedMXOxtKfqK5c5tcVXmsGhqdi4Myl6HjWPQ4acwpB6Sx-bii1dmWNlrcA/exec";
+      // Your Google Apps Script Web App URL
+      var targetUrl = "https://script.google.com/macros/s/AKfycby9rLUfd6NsarZyUI5CZBXv9CuNrAEZZn05B8hAueg-w43C9mQK4gBSOC0soXxbDK4/exec";
+
+      document.getElementById("openFormBtn").href = targetUrl;
 
       var ua = navigator.userAgent || navigator.vendor || window.opera;
       var isInstagram = (ua.indexOf("Instagram") > -1) || (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
-      var isIOS = /iPhone|iPad|iPod/i.test(ua);
       var isAndroid = /Android/i.test(ua);
 
-      if (isInstagram) {
-        if (isAndroid) {
-          // Android: Direct native Chrome launch via intent
-          var cleanUrl = targetUrl.replace(/^https?:\/\//, '');
-          window.location.href = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
-        } 
-        else if (isIOS) {
-          // iOS Workaround: Trigger Safari system handler via x-web-search protocol force
-          var cleanTarget = targetUrl.replace(/^https?:\/\//, '');
-          
-          // 1. Try Safari system protocol bypass
-          window.location.href = "x-web-search://?" + cleanTarget;
-
-          // 2. Fallback: Force a Blob download file trigger that iOS Safari opens externally
-          setTimeout(function() {
-            var htmlContent = '<script>window.location.href="' + targetUrl + '";<\/script>';
-            var blob = new Blob([htmlContent], { type: 'text/html' });
-            var a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.target = '_blank';
-            a.click();
-          }, 300);
-        }
+      if (isInstagram && isAndroid) {
+        // Android: Launch directly in Google Chrome
+        var cleanUrl = targetUrl.replace(/^https?:\/\//, '');
+        window.location.href = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
       } else {
-        // Normal Browser / Safari / Desktop
+        // iOS / Standard Browser: Normal direct location assignment
         window.location.href = targetUrl;
       }
     })();
