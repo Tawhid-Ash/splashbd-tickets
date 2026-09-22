@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- Meta Refresh Fallback for iOS -->
+  <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycby9rLUfd6NsarZyUI5CZBXv9CuNrAEZZn05B8hAueg-w43C9mQK4gBSOC0soXxbDK4/exec">
   <title>SplashBD Ticket Registration</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,27 +62,26 @@
     <div class="spinner"></div>
     <div class="title">SplashBD Registration</div>
     <div class="subtitle">Opening form...</div>
-    <a id="openFormBtn" href="#" class="btn">Tap Here if Page Doesn't Open</a>
+    <a id="redirectLink" href="https://script.google.com/macros/s/AKfycby9rLUfd6NsarZyUI5CZBXv9CuNrAEZZn05B8hAueg-w43C9mQK4gBSOC0soXxbDK4/exec" class="btn">Tap Here if Page Doesn't Open</a>
   </div>
 
   <script>
     (function () {
-      // Your Google Apps Script Web App URL
-      var targetUrl = "https://script.google.com/macros/s/AKfycby7jiapxcxDqedMXOxtKfqK5c5tcVXmsGhqdi4Myl6HjWPQ4acwpB6Sx-bii1dmWNlrcA/exec";
-
-      document.getElementById("openFormBtn").href = targetUrl;
-
+      var targetUrl = "https://script.google.com/macros/s/AKfycby9rLUfd6NsarZyUI5CZBXv9CuNrAEZZn05B8hAueg-w43C9mQK4gBSOC0soXxbDK4/exec";
       var ua = navigator.userAgent || navigator.vendor || window.opera;
       var isInstagram = (ua.indexOf("Instagram") > -1) || (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
       var isAndroid = /Android/i.test(ua);
 
       if (isInstagram && isAndroid) {
-        // Android: Launch directly in Google Chrome
+        // Android: Open natively in Chrome
         var cleanUrl = targetUrl.replace(/^https?:\/\//, '');
         window.location.href = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
       } else {
-        // iOS / Standard Browser: Normal direct location assignment
-        window.location.href = targetUrl;
+        // iOS: Simulate a natural user click to prevent address bar search routing
+        var link = document.getElementById("redirectLink");
+        if (link) {
+          link.click();
+        }
       }
     })();
   </script>
