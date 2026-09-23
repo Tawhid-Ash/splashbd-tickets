@@ -5,12 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>SplashBD Ticket Registration</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       width: 100%;
       min-height: 100vh;
@@ -22,7 +17,6 @@
       align-items: center;
       padding: 20px;
     }
-
     .card {
       width: 100%;
       max-width: 390px;
@@ -33,46 +27,10 @@
       text-align: center;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-
-    .logo {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .title {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .subtitle {
-      font-size: 14px;
-      color: #a1a1aa;
-      margin-bottom: 22px;
-    }
-
-    .message {
-      font-size: 14px;
-      color: #d4d4d8;
-      line-height: 1.6;
-      margin-bottom: 22px;
-    }
-
-    .spinner {
-      width: 42px;
-      height: 42px;
-      margin: 0 auto 20px;
-      border: 3px solid rgba(255,255,255,0.1);
-      border-left-color: #e1306c;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
+    .logo { font-size: 28px; margin-bottom: 12px; }
+    .title { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: #a1a1aa; margin-bottom: 22px; }
+    .message { font-size: 14px; color: #d4d4d8; line-height: 1.6; margin-bottom: 22px; }
     .button {
       display: flex;
       align-items: center;
@@ -89,89 +47,48 @@
       border: none;
       -webkit-tap-highlight-color: transparent;
     }
-
     .primary {
       background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       color: #ffffff;
       box-shadow: 0 4px 15px rgba(225,48,108,0.3);
     }
-
-    .safari {
-      background: #ffffff;
-      color: #111111;
-    }
-
-    .chrome {
-      background: #29292f;
-      border: 1px solid #3a3a43;
-      color: #ffffff;
-    }
-
-    .normal {
-      background: #222228;
-      border: 1px solid #37373f;
-      color: #ffffff;
-    }
-
-    .copy {
-      background: transparent;
-      border: 1px solid #44444d;
-      color: #d4d4d8;
-    }
-
+    .chrome { background: #29292f; border: 1px solid #3a3a43; color: #ffffff; }
+    .copy { background: transparent; border: 1px solid #44444d; color: #d4d4d8; }
     .instruction {
       margin-top: 18px;
       padding: 14px;
       border-radius: 10px;
       background: #222228;
-      border: 1px solid #34343c;
-      font-size: 12px;
+      border: 1px solid #e1306c;
+      font-size: 13px;
       line-height: 1.6;
-      color: #bdbdc6;
+      color: #ffffff;
       text-align: left;
     }
-
-    .small {
-      margin-top: 18px;
-      font-size: 11px;
-      color: #71717a;
-      line-height: 1.5;
-    }
+    .small { margin-top: 18px; font-size: 11px; color: #71717a; line-height: 1.5; }
   </style>
 </head>
 <body>
 
-  <!-- Card UI -->
   <div class="card">
     <div class="logo">💗</div>
     <div class="title">SplashBD Registration</div>
     <div class="subtitle">Retro Bollywood Night</div>
 
-    <!-- Spinner shown during initial attempt -->
-    <div id="loaderArea">
-      <div class="spinner"></div>
-      <div class="message">Opening registration form...</div>
+    <div class="message">
+      Instagram blocks Google Registration Forms from loading inside its app.
     </div>
 
-    <!-- Action Container -->
-    <div id="actionArea" style="display: none;">
-      <div class="message" id="messageText">
-        Please tap below to open the ticket registration form.
-      </div>
+    <!-- Correct Chrome Deep-Link (Fixes Search Engine Routing) -->
+    <a id="chromeBtn" class="button primary" href="#">🌐 Open in Chrome</a>
 
-      <!-- Main Action Button -->
-      <a id="mainBtn" class="button primary" href="#">Open Registration Form</a>
+    <!-- Copy Link Button -->
+    <button id="copyBtn" class="button copy" type="button" style="margin-top: 12px;">Copy Registration Link</button>
 
-      <!-- Secondary Fallback Button for iOS/Chrome -->
-      <a id="secondaryBtn" class="button chrome" style="display: none;" href="#">Open in External Browser</a>
-
-      <!-- Copy URL Button -->
-      <button id="copyBtn" class="button copy" type="button" style="margin-top: 12px;">Copy Link</button>
-
-      <div id="iosInstruction" class="instruction" style="display: none;">
-        <strong>Notice for Instagram Users:</strong><br>
-        If the page stays blank, tap the <strong>···</strong> menu in the top-right corner and select <strong>Open in Browser</strong> or <strong>Open in Safari</strong>.
-      </div>
+    <!-- Essential iOS Safari Instruction -->
+    <div class="instruction">
+      <strong>📱 Opening on iPhone (Safari):</strong><br>
+      Tap the <strong>···</strong> (three dots) in the top-right corner of Instagram and select <strong>Open in Browser</strong> or <strong>Open in Safari</strong>.
     </div>
 
     <div class="small">
@@ -182,23 +99,24 @@
   <script>
     (function () {
       var targetUrl = "https://script.google.com/macros/s/AKfycby7jiapxcxDqedMXOxtKfqK5c5tcVXmsGhqdi4Myl6HjWPQ4acwpB6Sx-bii1dmWNlrcA/exec";
-      
       var ua = navigator.userAgent || navigator.vendor || window.opera || "";
       var isAndroid = /Android/i.test(ua);
-      var isIOS = /iPhone|iPad|iPod/i.test(ua);
       var isInstagram = /Instagram|FBAN|FBAV|Messenger/i.test(ua);
 
-      var mainBtn = document.getElementById("mainBtn");
-      var secondaryBtn = document.getElementById("secondaryBtn");
+      var chromeBtn = document.getElementById("chromeBtn");
       var copyBtn = document.getElementById("copyBtn");
-      var loaderArea = document.getElementById("loaderArea");
-      var actionArea = document.getElementById("actionArea");
-      var iosInstruction = document.getElementById("iosInstruction");
 
-      // Set target URLs
-      mainBtn.href = targetUrl;
+      // Fixes Chrome Deep-Linking on iOS/Android
+      if (isAndroid) {
+        var cleanUrl = targetUrl.replace(/^https?:\/\//i, "");
+        chromeBtn.href = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+      } else {
+        // Correct iOS Google Chrome protocol scheme (prevents routing to google.com search bar)
+        var cleanTarget = targetUrl.replace(/^https?:\/\//i, "");
+        chromeBtn.href = "googlechromes://" + cleanTarget;
+      }
 
-      // Copy link functionality
+      // Copy Link Functionality
       copyBtn.addEventListener("click", function () {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(targetUrl).then(function() {
@@ -215,37 +133,9 @@
         }
       });
 
-      // Platform Specific Flow
-      if (isInstagram) {
-        loaderArea.style.display = "none";
-        actionArea.style.display = "block";
-
-        if (isAndroid) {
-          // Android Intent launch
-          var cleanUrl = targetUrl.replace(/^https?:\/\//i, "");
-          var androidIntent = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
-          mainBtn.href = androidIntent;
-        } else if (isIOS) {
-          // iOS UI elements
-          secondaryBtn.style.display = "flex";
-          secondaryBtn.href = "googlechrome://navigate?url=" + encodeURIComponent(targetUrl);
-          secondaryBtn.textContent = "🌐 Open in Chrome";
-          
-          mainBtn.className = "button safari";
-          mainBtn.textContent = " Open Registration";
-          mainBtn.href = targetUrl;
-
-          iosInstruction.style.display = "block";
-        }
-      } else {
-        // Standard Browser (Desktop Chrome/Safari): Direct location change
+      // Redirect if opened outside Instagram
+      if (!isInstagram) {
         window.location.href = targetUrl;
-
-        // Fallback if browser blocks auto-redirect
-        setTimeout(function() {
-          loaderArea.style.display = "none";
-          actionArea.style.display = "block";
-        }, 1000);
       }
     })();
   </script>
