@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>SplashBD Ticket Registration</title>
+  <title>SplashBD - Halloween Blackout</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       width: 100%;
       min-height: 100vh;
-      background-color: #0f0f11;
+      background-color: #08080a;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #ffffff;
+      color: #f4f4f5;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,17 +20,28 @@
     .card {
       width: 100%;
       max-width: 390px;
-      background: #1a1a1e;
-      border: 1px solid #2e2e35;
+      background: #121216;
+      border: 1px solid #27272a;
       border-radius: 16px;
       padding: 32px 20px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     }
-    .logo { font-size: 28px; margin-bottom: 12px; }
-    .title { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-    .subtitle { font-size: 14px; color: #a1a1aa; margin-bottom: 22px; }
-    .message { font-size: 14px; color: #d4d4d8; line-height: 1.6; margin-bottom: 22px; }
+    .logo { font-size: 32px; margin-bottom: 10px; }
+    .title { font-size: 22px; font-weight: 800; margin-bottom: 6px; color: #ffffff; }
+    .subtitle { font-size: 14px; color: #f97316; font-weight: 600; margin-bottom: 18px; }
+    .details-box {
+      background: #18181c;
+      border: 1px solid #27272a;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 13px;
+      color: #d4d4d8;
+      margin-bottom: 20px;
+      text-align: left;
+      line-height: 1.5;
+    }
+    .details-box span { color: #f97316; font-weight: 600; }
     .button {
       display: flex;
       align-items: center;
@@ -45,24 +56,22 @@
       font-weight: 700;
       cursor: pointer;
       border: none;
-      -webkit-tap-highlight-color: transparent;
     }
     .primary {
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      background: linear-gradient(45deg, #c2410c 0%, #ea580c 50%, #f97316 100%);
       color: #ffffff;
-      box-shadow: 0 4px 15px rgba(225,48,108,0.3);
+      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
     }
-    .chrome { background: #29292f; border: 1px solid #3a3a43; color: #ffffff; }
-    .copy { background: transparent; border: 1px solid #44444d; color: #d4d4d8; }
+    .copy { background: transparent; border: 1px solid #3f3f46; color: #d4d4d8; }
     .instruction {
       margin-top: 18px;
       padding: 14px;
       border-radius: 10px;
-      background: #222228;
-      border: 1px solid #e1306c;
-      font-size: 13px;
+      background: #18181b;
+      border: 1px solid #27272a;
+      font-size: 12px;
       line-height: 1.6;
-      color: #ffffff;
+      color: #d4d4d8;
       text-align: left;
     }
     .small { margin-top: 18px; font-size: 11px; color: #71717a; line-height: 1.5; }
@@ -71,29 +80,27 @@
 <body>
 
   <div class="card">
-    <div class="logo">💗</div>
+    <div class="logo">🎃🦇</div>
     <div class="title">SplashBD Registration</div>
-    <div class="subtitle">Retro Bollywood Night</div>
+    <div class="subtitle">Halloween Blackout Edition</div>
 
-    <div class="message">
-      Instagram blocks Google Registration Forms from loading inside its app.
+    <div class="details-box">
+      📅 <strong>Date:</strong> Oct 31st, 2026<br>
+      📍 <strong>Venue:</strong> Hopeberry Dhanmondi 27<br>
+      👤 <strong>Single Ticket:</strong> ৳1500 (Max 20)<br>
+      💑 <strong>Couple Ticket:</strong> Requires Man & Woman Name (2 entries)<br>
+      ✉️ <strong>Requirements:</strong> Valid Email & Instagram ID mandatory
     </div>
 
-    <!-- Correct Chrome Deep-Link (Fixes Search Engine Routing) -->
-    <a id="chromeBtn" class="button primary" href="#">🌐 Open in Chrome</a>
-
-    <!-- Copy Link Button -->
+    <a id="chromeBtn" class="button primary" href="#">🌐 Open Registration Form</a>
     <button id="copyBtn" class="button copy" type="button" style="margin-top: 12px;">Copy Registration Link</button>
 
-    <!-- Essential iOS Safari Instruction -->
     <div class="instruction">
-      <strong>📱 Opening on iPhone (Safari):</strong><br>
-      Tap the <strong>···</strong> (three dots) in the top-right corner of Instagram and select <strong>Open in Browser</strong> or <strong>Open in Safari</strong>.
+      <strong>📱 iPhone / Instagram Users:</strong><br>
+      Tap the <strong>···</strong> menu in the top-right corner and select <strong>Open in Safari</strong> to fill out the form smoothly.
     </div>
 
-    <div class="small">
-      SplashBD • 8th October 2026 • Hopeberry Dhanmondi 27
-    </div>
+    <div class="small">SplashBD Secure Ticketing System</div>
   </div>
 
   <script>
@@ -106,39 +113,26 @@
       var chromeBtn = document.getElementById("chromeBtn");
       var copyBtn = document.getElementById("copyBtn");
 
-      // Fixes Chrome Deep-Linking on iOS/Android
       if (isAndroid) {
         var cleanUrl = targetUrl.replace(/^https?:\/\//i, "");
         chromeBtn.href = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
       } else {
-        // Correct iOS Google Chrome protocol scheme (prevents routing to google.com search bar)
         var cleanTarget = targetUrl.replace(/^https?:\/\//i, "");
         chromeBtn.href = "googlechromes://" + cleanTarget;
       }
 
-      // Copy Link Functionality
       copyBtn.addEventListener("click", function () {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(targetUrl).then(function() {
             copyBtn.textContent = "Link Copied ✓";
           });
-        } else {
-          var ta = document.createElement("textarea");
-          ta.value = targetUrl;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand("copy");
-          document.body.removeChild(ta);
-          copyBtn.textContent = "Link Copied ✓";
         }
       });
 
-      // Redirect if opened outside Instagram
       if (!isInstagram) {
         window.location.href = targetUrl;
       }
     })();
   </script>
-
 </body>
 </html>
