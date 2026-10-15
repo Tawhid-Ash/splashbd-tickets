@@ -9,41 +9,43 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       width: 100%; min-height: 100vh; padding: 22px;
-      background: radial-gradient(ellipse at top, #351634 0%, #120b18 42%, #070609 100%);
+      background: radial-gradient(ellipse at top, #650d17 0%, #25070e 28%, #0b070b 62%, #030304 100%);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: #fff8f0; display: flex; justify-content: center; align-items: center; overflow-x: hidden;
     }
     .card {
       position: relative; isolation: isolate; overflow: hidden; width: 100%; max-width: 430px;
-      background: rgba(18, 12, 23, .96); border: 1px solid #5b2b42; border-radius: 22px;
-      padding: 27px 21px; text-align: center; box-shadow: 0 20px 55px rgba(0,0,0,.58), 0 0 35px rgba(168,85,247,.08);
+      background: rgba(12, 7, 10, .98); border: 1px solid #8a202b; border-radius: 22px;
+      padding: 27px 21px; text-align: center; box-shadow: 0 20px 65px rgba(0,0,0,.78), 0 0 45px rgba(255,25,25,.15);
     }
-    .card::before { content: "🎃"; position: absolute; left: -17px; top: 70px; z-index: -1; font-size: 90px; opacity: .10; animation: float 6s ease-in-out infinite; }
-    .card::after { content: "👹"; position: absolute; right: -20px; bottom: 80px; z-index: -1; font-size: 94px; opacity: .12; animation: float 7s ease-in-out infinite reverse; }
+    .card::before { content: "🎃"; position: absolute; left: -17px; top: 70px; z-index: -1; font-size: 150px; opacity: .19; animation: float 6s ease-in-out infinite; }
+    .card::after { content: "👹"; position: absolute; right: -20px; bottom: 80px; z-index: -1; font-size: 155px; opacity: .19; animation: float 7s ease-in-out infinite reverse; }
     .art { display: flex; justify-content: center; align-items: center; gap: 14px; margin-bottom: 10px; }
-    .art span { display: inline-block; font-size: clamp(40px, 11vw, 60px); filter: drop-shadow(0 0 14px rgba(255,117,24,.2)); animation: bob 3.4s ease-in-out infinite; }
+    .art span { display: inline-block; font-size: clamp(54px, 14vw, 82px); filter: drop-shadow(0 0 22px rgba(255,35,24,.55)); animation: bob 3.4s ease-in-out infinite; }
     .art span:nth-child(2) { animation-delay: -.8s; }
     .art span:nth-child(3) { animation-delay: -1.4s; }
-    .eyebrow { color: #ffb17b; font-size: 10px; text-transform: uppercase; letter-spacing: .26em; font-weight: 900; }
-    .title { margin: 8px 0 7px; font-size: clamp(24px, 6vw, 31px); line-height: 1.08; font-weight: 950; }
-    .title span { color: #ff8a23; }
-    .subtitle { font-size: 12px; color: #c8b7d0; letter-spacing: .05em; line-height: 1.6; }
+    .eyebrow { display: inline-block; color: #ff8a58; font-size: clamp(21px, 6vw, 29px); line-height: 1.1; text-transform: uppercase; letter-spacing: .10em; font-weight: 1000; text-shadow: 0 0 15px rgba(255,35,24,.7), 0 3px 0 #35070b; }
+    .title { margin: 12px 0 9px; font-size: clamp(27px, 7vw, 36px); line-height: 1.04; font-weight: 1000; text-shadow: 0 0 18px rgba(255,25,25,.42), 2px 3px 0 #35070b; }
+    .title span { color: #ff4a28; text-shadow: 0 0 12px rgba(255,35,24,.75), 2px 3px 0 #300409; }
+    .subtitle { font-size: 14px; color: #e5d3df; letter-spacing: .05em; line-height: 1.65; }
     .price-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 17px 0 6px; }
     .price { padding: 11px 6px; border: 1px solid #65334b; background: #211322; border-radius: 11px; }
     .price:last-child { border-color: #633f83; background: #1e1428; }
-    .price b { display: block; color: #ffb05b; font-size: 17px; margin-top: 3px; }
-    .price:last-child b { color: #d6a7ff; }
-    .price small { color: #d9c8df; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
-    .message { margin: 16px 0 17px; color: #ded2e2; font-size: 13px; line-height: 1.65; }
+    .price b { display: block; color: #ff7547; font-size: 21px; margin-top: 3px; }
+    .price:last-child b { color: #ff9c87; }
+    .price small { color: #d9c8df; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; font-weight: 850; }
+    .message { margin: 16px 0 17px; color: #f0e1e7; font-size: 15px; line-height: 1.75; }
     .button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 51px; margin-top: 11px; padding: 14px 16px; border-radius: 11px; text-decoration: none; font-size: 14px; font-weight: 900; cursor: pointer; border: none; -webkit-tap-highlight-color: transparent; }
-    .primary { background: linear-gradient(100deg, #ff7a18 0%, #ffb23e 100%); color: #1b0b06; box-shadow: 0 5px 18px rgba(255,117,24,.2); }
+    .primary { background: linear-gradient(100deg, #ff321e 0%, #ff8a23 100%); color: #1b0b06; box-shadow: 0 5px 18px rgba(255,117,24,.2); }
     .copy { background: transparent; border: 1px solid #56405f; color: #f4e7fb; }
-    .instruction { margin-top: 16px; padding: 13px; border-radius: 11px; background: #1a111f; border: 1px solid #56385e; font-size: 12px; line-height: 1.65; color: #f7edf9; text-align: left; }
+    .instruction { margin-top: 16px; padding: 13px; border-radius: 11px; background: #1a111f; border: 1px solid #8a2934; font-size: 14px; line-height: 1.75; color: #f7edf9; text-align: left; }
     .instruction strong { color: #ffb16b; }
     .small { margin-top: 17px; font-size: 10px; color: #897a90; line-height: 1.6; }
     @keyframes float { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-13px) rotate(6deg); } }
     @keyframes bob { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-6px) rotate(4deg); } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+    @keyframes horrorFlicker { 0%, 87%, 89%, 100% { filter: brightness(1); } 88% { filter: brightness(.75); } 90% { filter: brightness(1.12); } }
+    .title { animation: horrorFlicker 5s ease-in-out infinite; }
   </style>
 </head>
 <body>
