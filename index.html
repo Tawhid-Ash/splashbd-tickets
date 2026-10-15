@@ -2,137 +2,200 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SplashBD - Halloween Blackout</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      width: 100%;
-      min-height: 100vh;
-      background-color: #08080a;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0b0b0d;
       color: #f4f4f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 20px;
       display: flex;
       justify-content: center;
-      align-items: center;
-      padding: 20px;
     }
-    .card {
+    .container {
       width: 100%;
-      max-width: 390px;
-      background: #121216;
+      max-width: 480px;
+      background: #141417;
       border: 1px solid #27272a;
       border-radius: 16px;
-      padding: 32px 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      padding: 28px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
-    .logo { font-size: 32px; margin-bottom: 10px; }
-    .title { font-size: 22px; font-weight: 800; margin-bottom: 6px; color: #ffffff; }
-    .subtitle { font-size: 14px; color: #f97316; font-weight: 600; margin-bottom: 18px; }
-    .details-box {
-      background: #18181c;
-      border: 1px solid #27272a;
-      border-radius: 10px;
-      padding: 12px;
-      font-size: 13px;
-      color: #d4d4d8;
-      margin-bottom: 20px;
-      text-align: left;
-      line-height: 1.5;
-    }
-    .details-box span { color: #f97316; font-weight: 600; }
-    .button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    h2 { text-align: center; color: #ffffff; margin-bottom: 6px; font-size: 22px; }
+    .subtitle { text-align: center; color: #f97316; font-size: 14px; margin-bottom: 20px; font-weight: 600; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; color: #d4d4d8; margin-bottom: 6px; font-weight: 500; }
+    input, select {
       width: 100%;
-      min-height: 52px;
-      margin-top: 12px;
-      padding: 14px 16px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
+      padding: 12px;
+      background: #1e1e24;
+      border: 1px solid #3f3f46;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 14px;
     }
-    .primary {
+    input:focus, select:focus { border-color: #f97316; outline: none; }
+    .btn {
+      width: 100%;
+      padding: 14px;
       background: linear-gradient(45deg, #c2410c 0%, #ea580c 50%, #f97316 100%);
       color: #ffffff;
-      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
     }
-    .copy { background: transparent; border: 1px solid #3f3f46; color: #d4d4d8; }
-    .instruction {
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 10px;
+    .payment-info {
       background: #18181b;
       border: 1px solid #27272a;
-      font-size: 12px;
-      line-height: 1.6;
-      color: #d4d4d8;
-      text-align: left;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #a1a1aa;
+      margin-bottom: 16px;
+      line-height: 1.5;
     }
-    .small { margin-top: 18px; font-size: 11px; color: #71717a; line-height: 1.5; }
+    .payment-info span { color: #f97316; font-weight: bold; }
+    .hidden { display: none; }
+    .alert { padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 13px; text-align: center; }
+    .alert-error { background: #7f1d1d; color: #fca5a5; border: 1px solid #991b1b; }
+    .alert-success { background: #14532d; color: #86efac; border: 1px solid #166534; }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="logo">🎃🦇</div>
-    <div class="title">SplashBD Registration</div>
-    <div class="subtitle">Halloween Blackout Edition</div>
+<div class="container">
+  <h2>🎃 SplashBD Ticket Form</h2>
+  <div class="subtitle">Halloween Blackout • Oct 31st</div>
 
-    <div class="details-box">
-      📅 <strong>Date:</strong> Oct 31st, 2026<br>
-      📍 <strong>Venue:</strong> Hopeberry Dhanmondi 27<br>
-      👤 <strong>Single Ticket:</strong> ৳1500 (Max 20)<br>
-      💑 <strong>Couple Ticket:</strong> Requires Man & Woman Name (2 entries)<br>
-      ✉️ <strong>Requirements:</strong> Valid Email & Instagram ID mandatory
-    </div>
-
-    <a id="chromeBtn" class="button primary" href="#">🌐 Open Registration Form</a>
-    <button id="copyBtn" class="button copy" type="button" style="margin-top: 12px;">Copy Registration Link</button>
-
-    <div class="instruction">
-      <strong>📱 iPhone / Instagram Users:</strong><br>
-      Tap the <strong>···</strong> menu in the top-right corner and select <strong>Open in Safari</strong> to fill out the form smoothly.
-    </div>
-
-    <div class="small">SplashBD Secure Ticketing System</div>
+  <div class="payment-info">
+    💳 <strong>bKash / Nagad Merchant/Personal:</strong> 01XXXXXXXXX<br>
+    💰 <strong>Single:</strong> ৳1500/ticket (Max 20)<br>
+    💑 <strong>Couple:</strong> ৳3000 (Strictly 2 people: 1 Man & 1 Woman)
   </div>
 
-  <script>
-    (function () {
-      var targetUrl = "https://script.google.com/macros/s/AKfycby7jiapxcxDqedMXOxtKfqK5c5tcVXmsGhqdi4Myl6HjWPQ4acwpB6Sx-bii1dmWNlrcA/exec";
-      var ua = navigator.userAgent || navigator.vendor || window.opera || "";
-      var isAndroid = /Android/i.test(ua);
-      var isInstagram = /Instagram|FBAN|FBAV|Messenger/i.test(ua);
+  <div id="alertBox" class="alert hidden"></div>
 
-      var chromeBtn = document.getElementById("chromeBtn");
-      var copyBtn = document.getElementById("copyBtn");
+  <form id="ticketForm">
+    <div class="form-group">
+      <label>Email Address (Required)</label>
+      <input type="email" id="email" required placeholder="name@example.com">
+    </div>
 
-      if (isAndroid) {
-        var cleanUrl = targetUrl.replace(/^https?:\/\//i, "");
-        chromeBtn.href = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
-      } else {
-        var cleanTarget = targetUrl.replace(/^https?:\/\//i, "");
-        chromeBtn.href = "googlechromes://" + cleanTarget;
-      }
+    <div class="form-group">
+      <label>Instagram Account Handle (Required)</label>
+      <input type="text" id="instagram" required placeholder="@your_instagram">
+    </div>
 
-      copyBtn.addEventListener("click", function () {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(targetUrl).then(function() {
-            copyBtn.textContent = "Link Copied ✓";
-          });
+    <div class="form-group">
+      <label>Phone Number (bKash/Nagad sender)</label>
+      <input type="tel" id="phone" required placeholder="01712345678">
+    </div>
+
+    <div class="form-group">
+      <label>Ticket Category</label>
+      <select id="ticketType" onchange="toggleCategory()">
+        <option value="Single">Single Ticket (৳1500 each)</option>
+        <option value="Couple">Couple Ticket (৳3000 for 2 entries)</option>
+      </select>
+    </div>
+
+    <!-- Single Fields -->
+    <div id="singleFields">
+      <div class="form-group">
+        <label>Your Full Name</label>
+        <input type="text" id="buyerName" placeholder="Full Name">
+      </div>
+      <div class="form-group">
+        <label>Quantity (Max 20)</label>
+        <input type="number" id="quantity" min="1" max="20" value="1">
+      </div>
+    </div>
+
+    <!-- Couple Fields -->
+    <div id="coupleFields" class="hidden">
+      <div class="form-group">
+        <label>Man's Full Name</label>
+        <input type="text" id="manName" placeholder="Man's Full Name">
+      </div>
+      <div class="form-group">
+        <label>Woman's Full Name</label>
+        <input type="text" id="womanName" placeholder="Woman's Full Name">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Payment Transaction ID (TrxID)</label>
+      <input type="text" id="trxId" required placeholder="e.g. 9N78X2KL">
+    </div>
+
+    <button type="submit" class="btn" id="submitBtn">Confirm & Register</button>
+  </form>
+</div>
+
+<script>
+  function toggleCategory() {
+    var type = document.getElementById("ticketType").value;
+    if (type === "Couple") {
+      document.getElementById("singleFields").classList.add("hidden");
+      document.getElementById("coupleFields").classList.remove("hidden");
+    } else {
+      document.getElementById("singleFields").classList.remove("hidden");
+      document.getElementById("coupleFields").classList.add("hidden");
+    }
+  }
+
+  document.getElementById("ticketForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    var btn = document.getElementById("submitBtn");
+    var alertBox = document.getElementById("alertBox");
+    
+    btn.disabled = true;
+    btn.textContent = "Processing...";
+    alertBox.classList.add("hidden");
+
+    var ticketType = document.getElementById("ticketType").value;
+    var payload = {
+      email: document.getElementById("email").value,
+      instagram: document.getElementById("instagram").value,
+      phone: document.getElementById("phone").value,
+      ticketType: ticketType,
+      trxId: document.getElementById("trxId").value,
+      buyerName: ticketType === "Single" ? document.getElementById("buyerName").value : "",
+      quantity: ticketType === "Single" ? document.getElementById("quantity").value : 2,
+      manName: ticketType === "Couple" ? document.getElementById("manName").value : "",
+      womanName: ticketType === "Couple" ? document.getElementById("womanName").value : ""
+    };
+
+    google.script.run
+      .withSuccessHandler(function(response) {
+        btn.disabled = false;
+        btn.textContent = "Confirm & Register";
+        if (response.result === "success") {
+          alertBox.className = "alert alert-success";
+          alertBox.textContent = "Registration successful! Pass details sent to your email.";
+          alertBox.classList.remove("hidden");
+          document.getElementById("ticketForm").reset();
+        } else {
+          alertBox.className = "alert alert-error";
+          alertBox.textContent = response.message;
+          alertBox.classList.remove("hidden");
         }
-      });
+      })
+      .withFailureHandler(function(err) {
+        btn.disabled = false;
+        btn.textContent = "Confirm & Register";
+        alertBox.className = "alert alert-error";
+        alertBox.textContent = "Submission failed: " + err.message;
+        alertBox.classList.remove("hidden");
+      })
+      .doPost({ postData: { contents: JSON.stringify(payload) } });
+  });
+</script>
 
-      if (!isInstagram) {
-        window.location.href = targetUrl;
-      }
-    })();
-  </script>
 </body>
 </html>
