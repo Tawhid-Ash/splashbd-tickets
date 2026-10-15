@@ -2,200 +2,122 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SplashBD - Halloween Blackout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#09070d">
+  <title>SplashBD | Halloween Night Blackout Party</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: #0b0b0d;
-      color: #f4f4f5;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
+      width: 100%; min-height: 100vh; padding: 22px;
+      background: radial-gradient(ellipse at top, #351634 0%, #120b18 42%, #070609 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #fff8f0; display: flex; justify-content: center; align-items: center; overflow-x: hidden;
     }
-    .container {
-      width: 100%;
-      max-width: 480px;
-      background: #141417;
-      border: 1px solid #27272a;
-      border-radius: 16px;
-      padding: 28px 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    .card {
+      position: relative; isolation: isolate; overflow: hidden; width: 100%; max-width: 430px;
+      background: rgba(18, 12, 23, .96); border: 1px solid #5b2b42; border-radius: 22px;
+      padding: 27px 21px; text-align: center; box-shadow: 0 20px 55px rgba(0,0,0,.58), 0 0 35px rgba(168,85,247,.08);
     }
-    h2 { text-align: center; color: #ffffff; margin-bottom: 6px; font-size: 22px; }
-    .subtitle { text-align: center; color: #f97316; font-size: 14px; margin-bottom: 20px; font-weight: 600; }
-    .form-group { margin-bottom: 16px; }
-    label { display: block; font-size: 13px; color: #d4d4d8; margin-bottom: 6px; font-weight: 500; }
-    input, select {
-      width: 100%;
-      padding: 12px;
-      background: #1e1e24;
-      border: 1px solid #3f3f46;
-      border-radius: 8px;
-      color: #ffffff;
-      font-size: 14px;
-    }
-    input:focus, select:focus { border-color: #f97316; outline: none; }
-    .btn {
-      width: 100%;
-      padding: 14px;
-      background: linear-gradient(45deg, #c2410c 0%, #ea580c 50%, #f97316 100%);
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 15px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    .payment-info {
-      background: #18181b;
-      border: 1px solid #27272a;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      color: #a1a1aa;
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-    .payment-info span { color: #f97316; font-weight: bold; }
-    .hidden { display: none; }
-    .alert { padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 13px; text-align: center; }
-    .alert-error { background: #7f1d1d; color: #fca5a5; border: 1px solid #991b1b; }
-    .alert-success { background: #14532d; color: #86efac; border: 1px solid #166534; }
+    .card::before { content: "🎃"; position: absolute; left: -17px; top: 70px; z-index: -1; font-size: 90px; opacity: .10; animation: float 6s ease-in-out infinite; }
+    .card::after { content: "👹"; position: absolute; right: -20px; bottom: 80px; z-index: -1; font-size: 94px; opacity: .12; animation: float 7s ease-in-out infinite reverse; }
+    .art { display: flex; justify-content: center; align-items: center; gap: 14px; margin-bottom: 10px; }
+    .art span { display: inline-block; font-size: clamp(40px, 11vw, 60px); filter: drop-shadow(0 0 14px rgba(255,117,24,.2)); animation: bob 3.4s ease-in-out infinite; }
+    .art span:nth-child(2) { animation-delay: -.8s; }
+    .art span:nth-child(3) { animation-delay: -1.4s; }
+    .eyebrow { color: #ffb17b; font-size: 10px; text-transform: uppercase; letter-spacing: .26em; font-weight: 900; }
+    .title { margin: 8px 0 7px; font-size: clamp(24px, 6vw, 31px); line-height: 1.08; font-weight: 950; }
+    .title span { color: #ff8a23; }
+    .subtitle { font-size: 12px; color: #c8b7d0; letter-spacing: .05em; line-height: 1.6; }
+    .price-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 17px 0 6px; }
+    .price { padding: 11px 6px; border: 1px solid #65334b; background: #211322; border-radius: 11px; }
+    .price:last-child { border-color: #633f83; background: #1e1428; }
+    .price b { display: block; color: #ffb05b; font-size: 17px; margin-top: 3px; }
+    .price:last-child b { color: #d6a7ff; }
+    .price small { color: #d9c8df; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+    .message { margin: 16px 0 17px; color: #ded2e2; font-size: 13px; line-height: 1.65; }
+    .button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 51px; margin-top: 11px; padding: 14px 16px; border-radius: 11px; text-decoration: none; font-size: 14px; font-weight: 900; cursor: pointer; border: none; -webkit-tap-highlight-color: transparent; }
+    .primary { background: linear-gradient(100deg, #ff7a18 0%, #ffb23e 100%); color: #1b0b06; box-shadow: 0 5px 18px rgba(255,117,24,.2); }
+    .copy { background: transparent; border: 1px solid #56405f; color: #f4e7fb; }
+    .instruction { margin-top: 16px; padding: 13px; border-radius: 11px; background: #1a111f; border: 1px solid #56385e; font-size: 12px; line-height: 1.65; color: #f7edf9; text-align: left; }
+    .instruction strong { color: #ffb16b; }
+    .small { margin-top: 17px; font-size: 10px; color: #897a90; line-height: 1.6; }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-13px) rotate(6deg); } }
+    @keyframes bob { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-6px) rotate(4deg); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
   </style>
 </head>
 <body>
+  <main class="card">
+    <div class="art" aria-hidden="true"><span>🎃</span><span>👻</span><span>😈</span></div>
+    <div class="eyebrow">SplashBD presents</div>
+    <h1 class="title">HALLOWEEN NIGHT<br><span>BLACKOUT PARTY</span></h1>
+    <div class="subtitle">📅 31 October 2026 &nbsp;•&nbsp; 📍 Banani, Dhaka</div>
 
-<div class="container">
-  <h2>🎃 SplashBD Ticket Form</h2>
-  <div class="subtitle">Halloween Blackout • Oct 31st</div>
-
-  <div class="payment-info">
-    💳 <strong>bKash / Nagad Merchant/Personal:</strong> 01XXXXXXXXX<br>
-    💰 <strong>Single:</strong> ৳1500/ticket (Max 20)<br>
-    💑 <strong>Couple:</strong> ৳3000 (Strictly 2 people: 1 Man & 1 Woman)
-  </div>
-
-  <div id="alertBox" class="alert hidden"></div>
-
-  <form id="ticketForm">
-    <div class="form-group">
-      <label>Email Address (Required)</label>
-      <input type="email" id="email" required placeholder="name@example.com">
+    <div class="price-row" aria-label="Ticket prices">
+      <div class="price"><small>Single Ticket</small><b>৳1,500</b></div>
+      <div class="price"><small>Couple Ticket</small><b>৳2,500</b></div>
     </div>
 
-    <div class="form-group">
-      <label>Instagram Account Handle (Required)</label>
-      <input type="text" id="instagram" required placeholder="@your_instagram">
+    <p class="message">Ready to enter the darkness? Complete your Halloween ticket registration in your browser.<br><strong>Instagram ID and email are required.</strong></p>
+
+    <!-- Keep the existing Chrome deep-link and redirect flow. -->
+    <a id="chromeBtn" class="button primary" href="#">🌐 Open Registration in Chrome</a>
+    <button id="copyBtn" class="button copy" type="button">Copy Registration Link</button>
+
+    <div class="instruction">
+      <strong>📱 iPhone / Safari:</strong><br>
+      If this page opened inside Instagram, tap the <strong>···</strong> menu in the top-right corner and choose <strong>Open in Browser</strong> or <strong>Open in Safari</strong>. If Chrome is installed, use the button above to open it directly.
     </div>
 
-    <div class="form-group">
-      <label>Phone Number (bKash/Nagad sender)</label>
-      <input type="tel" id="phone" required placeholder="01712345678">
-    </div>
+    <div class="small">SplashBD • Halloween Night Blackout Party<br>Registration ID format: SBD-XXXXXXXX</div>
+  </main>
 
-    <div class="form-group">
-      <label>Ticket Category</label>
-      <select id="ticketType" onchange="toggleCategory()">
-        <option value="Single">Single Ticket (৳1500 each)</option>
-        <option value="Couple">Couple Ticket (৳3000 for 2 entries)</option>
-      </select>
-    </div>
+  <script>
+    (function () {
+      var targetUrl = "https://script.google.com/macros/s/AKfycby7jiapxcxDqedMXOxtKfqK5c5tcVXmsGhqdi4Myl6HjWPQ4acwpB6Sx-bii1dmWNlrcA/exec";
+      var ua = navigator.userAgent || navigator.vendor || window.opera || "";
+      var isAndroid = /Android/i.test(ua);
+      var isInstagram = /Instagram|FBAN|FBAV|Messenger/i.test(ua);
+      var chromeBtn = document.getElementById("chromeBtn");
+      var copyBtn = document.getElementById("copyBtn");
 
-    <!-- Single Fields -->
-    <div id="singleFields">
-      <div class="form-group">
-        <label>Your Full Name</label>
-        <input type="text" id="buyerName" placeholder="Full Name">
-      </div>
-      <div class="form-group">
-        <label>Quantity (Max 20)</label>
-        <input type="number" id="quantity" min="1" max="20" value="1">
-      </div>
-    </div>
+      // Preserve the original Chrome deep-link behavior for Android and iOS.
+      if (isAndroid) {
+        var cleanUrl = targetUrl.replace(/^https?:\/\//i, "");
+        chromeBtn.href = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+      } else {
+        var cleanTarget = targetUrl.replace(/^https?:\/\//i, "");
+        chromeBtn.href = "googlechromes://" + cleanTarget;
+      }
 
-    <!-- Couple Fields -->
-    <div id="coupleFields" class="hidden">
-      <div class="form-group">
-        <label>Man's Full Name</label>
-        <input type="text" id="manName" placeholder="Man's Full Name">
-      </div>
-      <div class="form-group">
-        <label>Woman's Full Name</label>
-        <input type="text" id="womanName" placeholder="Woman's Full Name">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Payment Transaction ID (TrxID)</label>
-      <input type="text" id="trxId" required placeholder="e.g. 9N78X2KL">
-    </div>
-
-    <button type="submit" class="btn" id="submitBtn">Confirm & Register</button>
-  </form>
-</div>
-
-<script>
-  function toggleCategory() {
-    var type = document.getElementById("ticketType").value;
-    if (type === "Couple") {
-      document.getElementById("singleFields").classList.add("hidden");
-      document.getElementById("coupleFields").classList.remove("hidden");
-    } else {
-      document.getElementById("singleFields").classList.remove("hidden");
-      document.getElementById("coupleFields").classList.add("hidden");
-    }
-  }
-
-  document.getElementById("ticketForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    var btn = document.getElementById("submitBtn");
-    var alertBox = document.getElementById("alertBox");
-    
-    btn.disabled = true;
-    btn.textContent = "Processing...";
-    alertBox.classList.add("hidden");
-
-    var ticketType = document.getElementById("ticketType").value;
-    var payload = {
-      email: document.getElementById("email").value,
-      instagram: document.getElementById("instagram").value,
-      phone: document.getElementById("phone").value,
-      ticketType: ticketType,
-      trxId: document.getElementById("trxId").value,
-      buyerName: ticketType === "Single" ? document.getElementById("buyerName").value : "",
-      quantity: ticketType === "Single" ? document.getElementById("quantity").value : 2,
-      manName: ticketType === "Couple" ? document.getElementById("manName").value : "",
-      womanName: ticketType === "Couple" ? document.getElementById("womanName").value : ""
-    };
-
-    google.script.run
-      .withSuccessHandler(function(response) {
-        btn.disabled = false;
-        btn.textContent = "Confirm & Register";
-        if (response.result === "success") {
-          alertBox.className = "alert alert-success";
-          alertBox.textContent = "Registration successful! Pass details sent to your email.";
-          alertBox.classList.remove("hidden");
-          document.getElementById("ticketForm").reset();
+      // Preserve the original copy-link behavior.
+      copyBtn.addEventListener("click", function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(targetUrl).then(function () {
+            copyBtn.textContent = "Link Copied ✓";
+          }).catch(function () {
+            fallbackCopy(targetUrl);
+          });
         } else {
-          alertBox.className = "alert alert-error";
-          alertBox.textContent = response.message;
-          alertBox.classList.remove("hidden");
+          fallbackCopy(targetUrl);
         }
-      })
-      .withFailureHandler(function(err) {
-        btn.disabled = false;
-        btn.textContent = "Confirm & Register";
-        alertBox.className = "alert alert-error";
-        alertBox.textContent = "Submission failed: " + err.message;
-        alertBox.classList.remove("hidden");
-      })
-      .doPost({ postData: { contents: JSON.stringify(payload) } });
-  });
-</script>
+      });
 
+      function fallbackCopy(text) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); copyBtn.textContent = "Link Copied ✓"; }
+        catch (error) { copyBtn.textContent = "Copy failed — open in browser"; }
+        document.body.removeChild(ta);
+      }
+
+      // Preserve the original redirect: in-app browser shows guidance; external browser opens the web app.
+      if (!isInstagram) {
+        window.location.href = targetUrl;
+      }
+    })();
+  </script>
 </body>
 </html>
